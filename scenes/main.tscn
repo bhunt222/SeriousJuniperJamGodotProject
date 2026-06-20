@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://1xqaymlsxakt"]
+
+[ext_resource type="Script" uid="uid://dxawa26itwxmp" path="res://scripts/ground.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://by1gfvb3ii42n" path="res://scenes/player.tscn" id="2_sugp2"]
+[ext_resource type="Texture2D" uid="uid://d3vk0rdh5wmhd" path="res://assets/sprites/mouse.png" id="3_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://cetcwqf8v154b" path="res://assets/sprites/Mouse fly/Flying mouse.png" id="4_tbgi4"]
+[ext_resource type="Script" uid="uid://dm208e1sosc7c" path="res://scripts/mouse_cursor.gd" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://dyl81xbivlv8n" path="res://scripts/components/hurtbox.gd" id="5_tefeu"]
+[ext_resource type="Script" uid="uid://dri8th1wirjj8" path="res://scripts/components/health.gd" id="6_o6xl0"]
+
+[sub_resource type="Gradient" id="Gradient_sgp6g"]
+offsets = PackedFloat32Array(0, 0.99444443)
+colors = PackedColorArray(0.14370614, 0.37859094, 1, 1, 0, 0.8, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o5qli"]
+gradient = SubResource("Gradient_sgp6g")
+
+[sub_resource type="QuadMesh" id="QuadMesh_o5qli"]
+
+[sub_resource type="Gradient" id="Gradient_o5qli"]
+offsets = PackedFloat32Array(0.036144577)
+colors = PackedColorArray(0.29803923, 0.29803923, 0.29803923, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0wfyh"]
+gradient = SubResource("Gradient_o5qli")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0wfyh"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sugp2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_0wfyh"]
+size = Vector2(50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbgi4"]
+atlas = ExtResource("3_jyhfs")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tefeu"]
+atlas = ExtResource("4_tbgi4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6xl0"]
+atlas = ExtResource("4_tbgi4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tipki"]
+atlas = ExtResource("4_tbgi4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85g3d"]
+atlas = ExtResource("4_tbgi4")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_choun"]
+atlas = ExtResource("4_tbgi4")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya4ey"]
+atlas = ExtResource("4_tbgi4")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb6dy"]
+atlas = ExtResource("4_tbgi4")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trceg"]
+atlas = ExtResource("4_tbgi4")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8y0u"]
+atlas = ExtResource("4_tbgi4")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkv2x"]
+atlas = ExtResource("4_tbgi4")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tefeu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbgi4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tefeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6xl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tipki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85g3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_choun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ya4ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb6dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trceg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8y0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkv2x")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 16.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbj1t"]
+
+[sub_resource type="Gradient" id="Gradient_jyhfs"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tbgi4"]
+gradient = SubResource("Gradient_jyhfs")
+
+[node name="Main" type="Node" unique_id=1269073240]
+
+[node name="World" type="Node2D" parent="." unique_id=574668374]
+
+[node name="BG" type="Sprite2D" parent="World" unique_id=122279924]
+position = Vector2(578.49994, 327.3757)
+rotation = -1.5707964
+scale = Vector2(2.562, 10000)
+texture = SubResource("GradientTexture1D_o5qli")
+
+[node name="Ground" type="StaticBody2D" parent="World" unique_id=91225673]
+position = Vector2(0, 517)
+script = ExtResource("1_jyhfs")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="World/Ground" unique_id=123200078]
+position = Vector2(579.25, 68.25)
+scale = Vector2(10000, 137.5)
+mesh = SubResource("QuadMesh_o5qli")
+texture = SubResource("GradientTexture1D_0wfyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Ground" unique_id=1113140715]
+shape = SubResource("WorldBoundaryShape2D_0wfyh")
+
+[node name="Area2D" type="Area2D" parent="World/Ground" unique_id=1307638252]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Ground/Area2D" unique_id=289130195]
+shape = SubResource("WorldBoundaryShape2D_sugp2")
+
+[node name="Player" parent="World" unique_id=1863113073 instance=ExtResource("2_sugp2")]
+position = Vector2(145, 499)
+
+[node name="GunRig" parent="World/Player" index="4" unique_id=305390026 node_paths=PackedStringArray("bullet_container")]
+bullet_container = NodePath("../../BulletContainer")
+
+[node name="Decoration" type="Node2D" parent="World" unique_id=81552474]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="World/Decoration" unique_id=1659756715]
+position = Vector2(155, 128)
+mesh = SubResource("QuadMesh_0wfyh")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="World/Decoration" unique_id=15081299]
+position = Vector2(977, 128)
+mesh = SubResource("QuadMesh_0wfyh")
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="World/Decoration" unique_id=575872384]
+position = Vector2(1834, 128)
+mesh = SubResource("QuadMesh_0wfyh")
+
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="World/Decoration" unique_id=1789551837]
+position = Vector2(-652, 103)
+mesh = SubResource("QuadMesh_0wfyh")
+
+[node name="BulletContainer" type="Node2D" parent="World" unique_id=134612623]
+
+[node name="Mouse" type="Node2D" parent="World" unique_id=1764548456]
+position = Vector2(439, 338)
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="World/Mouse" unique_id=840368036]
+sprite_frames = SubResource("SpriteFrames_tefeu")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.0894028
+
+[node name="Hurtbox" type="Area2D" parent="World/Mouse" unique_id=1144500800 node_paths=PackedStringArray("health")]
+script = ExtResource("5_tefeu")
+health = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Mouse/Hurtbox" unique_id=700062861]
+shape = SubResource("RectangleShape2D_jbj1t")
+debug_color = Color(0.99758357, 0, 0.17276654, 0.41960785)
+
+[node name="Health" type="Node" parent="World/Mouse" unique_id=1311838518]
+script = ExtResource("6_o6xl0")
+
+[node name="MouseCursor" type="Node2D" parent="." unique_id=262174129]
+script = ExtResource("5_tbgi4")
+
+[node name="Sprite2D" type="Sprite2D" parent="MouseCursor" unique_id=283956792]
+position = Vector2(0, 4.75)
+scale = Vector2(0.0390625, 10.5)
+texture = SubResource("GradientTexture1D_tbgi4")
+
+[connection signal="area_entered" from="World/Ground/Area2D" to="World/Ground" method="_on_area_2d_area_entered"]
+
+[editable path="World/Player"]
