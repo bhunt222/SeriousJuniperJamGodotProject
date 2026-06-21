@@ -1,21 +1,21 @@
 extends PlayerState
 
 func enter() -> void:
-	player.anim_sprite.play(player.current_mode.anim_prefix + "_idle")
-	print("Enter Idle State")
-
-func exit() -> void:
-	print("Exit Idle State")
+	player.play_mode_animation("idle")
 
 func physics_update(delta: float) -> void:
-	var mode : PlayerMode = player.current_mode
-	var dir : float = Input.get_axis("move_left", "move_right")
+	var mode := player.current_mode
+	var dir := player.get_move_dir()
 
 	player.linear_velocity.x = move_toward(player.linear_velocity.x, 0, mode.friction * delta)
 
-	if not player.is_on_floor():
-		transitioned.emit(self, "fall")
-	elif dir != 0:
-		transitioned.emit(self, "run")
-	elif Input.is_action_just_pressed("jump") and player.jumps_remaining > 0:
-		transitioned.emit(self, "jump")
+	if try_transition_spin_dash_charge():
+		return
+	if try_transition_drill():
+		return
+	if check_airborne_transition():
+		return
+	if dir != 0:
+		transitioned.emit(self, PlayerStateMachine.STATE_RUN)
+	elif try_transition_jump():
+		pass

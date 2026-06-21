@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1sascax7dsqq"
-path="res://.godot/imported/Roobler Runing.png-76aff11bb98ebea8f3f789c84617bc22.ctex"
+uid="uid://d131mf63wu0bm"
+path="res://.godot/imported/Arm Throw.png-a52bb5d871c8c4684d6629ba59ca8511.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Roobler Runing.png"
-dest_files=["res://.godot/imported/Roobler Runing.png-76aff11bb98ebea8f3f789c84617bc22.ctex"]
+source_file="res://assets/sprites/Roobler animation/Arm Throw.png"
+dest_files=["res://.godot/imported/Arm Throw.png-a52bb5d871c8c4684d6629ba59ca8511.ctex"]
 
 [params]
 

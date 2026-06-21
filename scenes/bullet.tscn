@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dch0e0yfbw18s"]
 
 [ext_resource type="Script" uid="uid://vnp1k2wdw6i5" path="res://scripts/bullet.gd" id="1_mkf8s"]
+[ext_resource type="Script" uid="uid://xfaylxyhx0nt" path="res://scripts/components/hitbox.gd" id="2_y25gk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_h1aey"]
 radius = 1.5
@@ -17,6 +18,10 @@ gradient = SubResource("Gradient_mkf8s")
 radius = 1.5
 height = 5.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 2.0
+height = 6.0
+
 [node name="Bullet" type="Area2D" unique_id=2107658502 groups=["bullet"]]
 script = ExtResource("1_mkf8s")
 
@@ -28,3 +33,11 @@ texture = SubResource("GradientTexture1D_y25gk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1724415088]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_h1aey")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=861654485]
+script = ExtResource("2_y25gk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=797555813]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_g4v7s")
+debug_color = Color(0.9918234, 0, 0.26658827, 0.41960785)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq7lbrgpj74y"
-path="res://.godot/imported/Meatball roll (1).png-35cbb1432ca4b9f27d7856ec9556ebcb.ctex"
+uid="uid://mmvy5lwt1psy"
+path="res://.godot/imported/Meatball spindash.png-910dc01b0c93177405d3fc5914b1d7fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Meatball roll (1).png"
-dest_files=["res://.godot/imported/Meatball roll (1).png-35cbb1432ca4b9f27d7856ec9556ebcb.ctex"]
+source_file="res://assets/sprites/Roobler animation/Meatball spindash.png"
+dest_files=["res://.godot/imported/Meatball spindash.png-910dc01b0c93177405d3fc5914b1d7fe.ctex"]
 
 [params]
 
