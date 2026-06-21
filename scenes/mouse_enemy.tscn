@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://bus1v8eeyw4pv"]
+
+[ext_resource type="Script" uid="uid://be0j63vv7grkj" path="res://scripts/enemy.gd" id="1_tnctp"]
+[ext_resource type="Shader" uid="uid://cwc27agkf2p46" path="res://resources/shaders/damage_flash.gdshader" id="2_5cpv7"]
+[ext_resource type="Texture2D" uid="uid://d3vk0rdh5wmhd" path="res://assets/sprites/mouse.png" id="3_oer2i"]
+[ext_resource type="Texture2D" uid="uid://cetcwqf8v154b" path="res://assets/sprites/Mouse fly/Flying mouse.png" id="4_7urdi"]
+[ext_resource type="Script" uid="uid://dyl81xbivlv8n" path="res://scripts/components/hurtbox.gd" id="5_rdf4i"]
+[ext_resource type="Script" uid="uid://dri8th1wirjj8" path="res://scripts/components/health.gd" id="6_ywn06"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_85g3d"]
+resource_local_to_scene = true
+shader = ExtResource("2_5cpv7")
+shader_parameter/flash_modifier = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbgi4"]
+atlas = ExtResource("3_oer2i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tefeu"]
+atlas = ExtResource("4_7urdi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6xl0"]
+atlas = ExtResource("4_7urdi")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tipki"]
+atlas = ExtResource("4_7urdi")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85g3d"]
+atlas = ExtResource("4_7urdi")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_choun"]
+atlas = ExtResource("4_7urdi")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya4ey"]
+atlas = ExtResource("4_7urdi")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb6dy"]
+atlas = ExtResource("4_7urdi")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trceg"]
+atlas = ExtResource("4_7urdi")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8y0u"]
+atlas = ExtResource("4_7urdi")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkv2x"]
+atlas = ExtResource("4_7urdi")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tefeu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbgi4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tefeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6xl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tipki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85g3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_choun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ya4ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb6dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trceg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8y0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkv2x")
+}],
+"loop": 1,
+"name": &"flying",
+"speed": 16.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbj1t"]
+
+[node name="MouseEnemy" type="Node2D" unique_id=1246575965 groups=["enemy"]]
+scale = Vector2(2, 2)
+script = ExtResource("1_tnctp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=288831197]
+material = SubResource("ShaderMaterial_85g3d")
+sprite_frames = SubResource("SpriteFrames_tefeu")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.0894028
+
+[node name="FlashTimer" type="Timer" parent="." unique_id=1142334034]
+wait_time = 0.1
+one_shot = true
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1379953487 node_paths=PackedStringArray("health")]
+script = ExtResource("5_rdf4i")
+health = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=743806216]
+shape = SubResource("RectangleShape2D_jbj1t")
+debug_color = Color(0.99758357, 0, 0.17276654, 0.41960785)
+
+[node name="Health" type="Node" parent="." unique_id=1699912407]
+script = ExtResource("6_ywn06")
+max_health = 10
+
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
+[connection signal="damage_taken" from="Health" to="." method="_on_health_damage_taken"]
+[connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

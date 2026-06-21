@@ -3,13 +3,8 @@
 [ext_resource type="Script" uid="uid://dxawa26itwxmp" path="res://scripts/ground.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://by1gfvb3ii42n" path="res://scenes/player.tscn" id="2_sugp2"]
 [ext_resource type="Texture2D" uid="uid://c1gxpbkje83fd" path="res://assets/sprites/The Doner ville tile 0.5.png" id="2_tipki"]
-[ext_resource type="Texture2D" uid="uid://d3vk0rdh5wmhd" path="res://assets/sprites/mouse.png" id="3_jyhfs"]
-[ext_resource type="Script" uid="uid://be0j63vv7grkj" path="res://scripts/enemy.gd" id="4_85g3d"]
-[ext_resource type="Texture2D" uid="uid://cetcwqf8v154b" path="res://assets/sprites/Mouse fly/Flying mouse.png" id="4_tbgi4"]
-[ext_resource type="Shader" uid="uid://cwc27agkf2p46" path="res://resources/shaders/damage_flash.gdshader" id="5_choun"]
+[ext_resource type="PackedScene" uid="uid://bus1v8eeyw4pv" path="res://scenes/mouse_enemy.tscn" id="4_o6xl0"]
 [ext_resource type="Script" uid="uid://dm208e1sosc7c" path="res://scripts/mouse_cursor.gd" id="5_tbgi4"]
-[ext_resource type="Script" uid="uid://dyl81xbivlv8n" path="res://scripts/components/hurtbox.gd" id="5_tefeu"]
-[ext_resource type="Script" uid="uid://dri8th1wirjj8" path="res://scripts/components/health.gd" id="6_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://c23f7ssrumtqk" path="res://assets/sprites/Cross Air stand.png" id="11_ya4ey"]
 [ext_resource type="FontFile" uid="uid://dmhhfpfkjawos" path="res://assets/fonts/tinypixel.otf" id="12_eb6dy"]
 
@@ -58,103 +53,6 @@ sources/0 = SubResource("TileSetAtlasSource_85g3d")
 
 [sub_resource type="QuadMesh" id="QuadMesh_0wfyh"]
 size = Vector2(50, 50)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_85g3d"]
-shader = ExtResource("5_choun")
-shader_parameter/flash_modifier = 0.0
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tbgi4"]
-atlas = ExtResource("3_jyhfs")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tefeu"]
-atlas = ExtResource("4_tbgi4")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6xl0"]
-atlas = ExtResource("4_tbgi4")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tipki"]
-atlas = ExtResource("4_tbgi4")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_85g3d"]
-atlas = ExtResource("4_tbgi4")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_choun"]
-atlas = ExtResource("4_tbgi4")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ya4ey"]
-atlas = ExtResource("4_tbgi4")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eb6dy"]
-atlas = ExtResource("4_tbgi4")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_trceg"]
-atlas = ExtResource("4_tbgi4")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a8y0u"]
-atlas = ExtResource("4_tbgi4")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jkv2x"]
-atlas = ExtResource("4_tbgi4")
-region = Rect2(0, 96, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_tefeu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tbgi4")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tefeu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o6xl0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tipki")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_85g3d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_choun")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ya4ey")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eb6dy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_trceg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a8y0u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jkv2x")
-}],
-"loop": 1,
-"name": &"flying",
-"speed": 16.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbj1t"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_yf5fn"]
 size = Vector2(25, 300)
@@ -214,32 +112,17 @@ mesh = SubResource("QuadMesh_0wfyh")
 
 [node name="BulletContainer" type="Node2D" parent="World" unique_id=134612623]
 
-[node name="MouseEnemy" type="Node2D" parent="World" unique_id=1764548456 groups=["enemy"]]
+[node name="MouseEnemy" parent="World" unique_id=1246575965 instance=ExtResource("4_o6xl0")]
 position = Vector2(439, 338)
-scale = Vector2(2, 2)
-script = ExtResource("4_85g3d")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="World/MouseEnemy" unique_id=840368036]
-material = SubResource("ShaderMaterial_85g3d")
-sprite_frames = SubResource("SpriteFrames_tefeu")
-animation = &"flying"
-autoplay = "flying"
-frame_progress = 0.0894028
+[node name="MouseEnemy2" parent="World" unique_id=951821551 instance=ExtResource("4_o6xl0")]
+position = Vector2(313, 306)
 
-[node name="FlashTimer" type="Timer" parent="World/MouseEnemy" unique_id=1478455046]
-wait_time = 0.1
-one_shot = true
+[node name="MouseEnemy3" parent="World" unique_id=754505597 instance=ExtResource("4_o6xl0")]
+position = Vector2(180, 338)
 
-[node name="Hurtbox" type="Area2D" parent="World/MouseEnemy" unique_id=1144500800 node_paths=PackedStringArray("health")]
-script = ExtResource("5_tefeu")
-health = NodePath("../Health")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/MouseEnemy/Hurtbox" unique_id=700062861]
-shape = SubResource("RectangleShape2D_jbj1t")
-debug_color = Color(0.99758357, 0, 0.17276654, 0.41960785)
-
-[node name="Health" type="Node" parent="World/MouseEnemy" unique_id=1311838518]
-script = ExtResource("6_o6xl0")
+[node name="MouseEnemy4" parent="World" unique_id=341827443 instance=ExtResource("4_o6xl0")]
+position = Vector2(32, 306)
 
 [node name="FinishPole" type="Node2D" parent="World" unique_id=703227049]
 position = Vector2(885, 517)
@@ -306,9 +189,5 @@ theme_override_font_sizes/font_size = 32
 text = "Score: 10,000"
 
 [connection signal="area_entered" from="World/Ground/Area2D" to="World/Ground" method="_on_area_2d_area_entered"]
-[connection signal="timeout" from="World/MouseEnemy/FlashTimer" to="World/MouseEnemy" method="_on_flash_timer_timeout"]
-[connection signal="area_entered" from="World/MouseEnemy/Hurtbox" to="World/MouseEnemy/Hurtbox" method="_on_area_entered"]
-[connection signal="damage_taken" from="World/MouseEnemy/Health" to="World/MouseEnemy" method="_on_health_damage_taken"]
-[connection signal="health_depleted" from="World/MouseEnemy/Health" to="World/MouseEnemy" method="_on_health_health_depleted"]
 
 [editable path="World/Player"]
